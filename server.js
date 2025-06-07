@@ -4,6 +4,7 @@ import connectDB from "./db/connectDB.js";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/userRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import sсhoolRoutes from "./routes/schoolRoutes.js";
 import {Server} from 'socket.io';
 import {createServer} from 'node:http';
 import {v2 as cloudinary} from "cloudinary";
@@ -27,13 +28,6 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
 
 // Middlewares
 app.use(cookieParser());
@@ -62,6 +56,7 @@ io.on("connection", (socket) => {
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/rooms", roomsRoutes);
+app.use("/api/school", sсhoolRoutes);
 
 
 

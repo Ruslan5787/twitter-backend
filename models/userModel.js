@@ -41,8 +41,11 @@ const userSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		rooms: {
-
+		role: { type: String, required: true }, 
+		groups: {
+			type: [mongoose.Schema.Types.ObjectId],
+			ref: "User",
+			default: [],
 		}
 	},
 	{

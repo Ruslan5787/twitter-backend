@@ -245,7 +245,6 @@ const freezeAccount = async (req, res) => {
 };
 
 const searchUsers = async (req, res) => {
-    console.log('e')
     try {
         const {username} = req.params;
 

@@ -1,5 +1,5 @@
-import  mongoose from 'mongoose';
-var Schema = mongoose.Schema;
+import mongoose, {Schema} from 'mongoose';
+
 var schools = new Schema({
     email: {
         type: String,

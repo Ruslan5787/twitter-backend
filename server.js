@@ -30,11 +30,10 @@ cloudinary.config({
 });
 
 // Middlewares
-app.use(cookieParser());
-app.use(cors({origin: 'http://localhost:3000', // Порт Vite
-    credentials: true,}));
+app.use(cors());
 app.use(express.json({limit: "50mb"})); // To parse JSON data in the req.body
 app.use(express.urlencoded({extended: true})); // To parse form data in the req.body
+app.use(cookieParser());
 
 const server = createServer(app);
 const io = new Server(server);
@@ -56,7 +55,7 @@ io.on("connection", (socket) => {
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/rooms", roomsRoutes);
-app.use("/api/school", sсhoolRoutes);
+app.use("/api/schools", sсhoolRoutes);
 
 
 

@@ -24,8 +24,7 @@ const sendWelcomeEmail = async (to, username) => {
         await transporter.sendMail(mailOptions);
         console.log('Письмо успешно отправлено');
     } catch (error) {
-        console.error('Ошибка при отправке письма:', error);
-        throw new Error('Ошибка при отправке письма');
+        console.log('Ошибка при отправке письма:', error);
     }
 };
 

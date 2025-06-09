@@ -10,6 +10,5 @@ router.get("/:recipientId", protectRoute, getRoom)
 router.post("/createRoom", protectRoute, createRoom)
 router.post("/sendMessage", protectRoute, sendMessage)
 router.get("/messages/:roomId", protectRoute, getRoomMessages)
-// router.get("/recipients5252", protectRoute, getUsersListForCorrespondence)
 
 export default router;

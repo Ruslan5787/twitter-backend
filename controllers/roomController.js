@@ -1,5 +1,6 @@
 import Room from "../models/roomModel.js";
 import User from "../models/userModel.js";
+import Group from "../models/groupsModel.js";
 
 const getRoom = async (req, res) => {
     try {
@@ -30,7 +31,7 @@ const getUsersListForCorrespondence = async (req, res) => {
     try {
         if (!req.user) {
             console.error('req.user is undefined');
-            return res.status(401).json({ error: 'Пользователь не аутентифицирован' });
+            return res.status(401).json({error: 'Пользователь не аутентифицирован'});
         }
 
         const userId = req.user._id;
@@ -41,7 +42,7 @@ const getUsersListForCorrespondence = async (req, res) => {
         }).populate('lastMessage.sender').lean(); // Используем lean для упрощения данных
 
         if (!rooms || rooms.length < 1) {
-            return res.status(404).json({ error: "У вас нет переписок" });
+            return res.status(404).json({error: "У вас нет переписок"});
         }
 
         // Извлекаем информацию о получателях
@@ -78,7 +79,7 @@ const getUsersListForCorrespondence = async (req, res) => {
         return res.status(200).json(filteredRecipients);
     } catch (error) {
         console.error('Error in getUsersListForCorrespondence:', error);
-        return res.status(500).json({ error: 'Ошибка сервера', details: error.message });
+        return res.status(500).json({error: 'Ошибка сервера', details: error.message});
     }
 };
 

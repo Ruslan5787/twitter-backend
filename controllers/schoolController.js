@@ -5,10 +5,11 @@ import Group from "../models/groupsModel.js";
 
 const createSchool = async (req, res) => {
     try {
+        console.log(req.body)
         const teacherId = req.user._id;
         const {title, email, inn} = req.body;
-        const school = await School.findOne({title});
-
+        const school = await School.findOne({title: title});
+        console.log(title)
         if (school) {
             return res.status(400).json({error: "Школа уже существует в системе"});
         }

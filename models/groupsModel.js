@@ -8,6 +8,7 @@ const groups = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     },
+    users: [{type: Schema.Types.ObjectId}],
 });
 
 const Group = mongoose.model('Group', groups);

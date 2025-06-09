@@ -6,7 +6,7 @@ const createSchool = async (req, res) => {
         const teacherId = req.user._id;
         const {title, email, inn} = req.body;
         const school = await School.findOne({title});
-
+        
         if (school) {
             return res.status(400).json({error: "Школа уже существует в системе"});
         }
